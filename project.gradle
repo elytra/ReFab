@@ -7,8 +7,8 @@ ext {
 	useElytraVersionFormat = true
 	version = '1'
 
-	concreteVersion = '0.4.34'
-	concreteModules = [ 'common', 'inventory']
+	concreteVersion = '0.5.40'
+	concreteModules = [ 'common', 'inventory' ]
 
 	coremod = null
 	miniVersion = null
@@ -16,7 +16,7 @@ ext {
 	language = 'java'
 
 	forge = '1.12.2-14.23.4.2736'
-	mappings = 'snapshot_20180701'
+	mappings = 'snapshot_20180715'
 
 	enforceLicenseHeaders = false
 
@@ -49,13 +49,8 @@ repositories {
     }
     ivy {
         // baubles mirror
-        name "endless.blue dependency mirror"
-        artifactPattern "https://endless.blue/files/ivy/[module]-[revision].[ext]"
-    }
-    maven {
-        // curseforge maven for efab
-        name = "CurseForge"
-        url = "https://minecraft.curseforge.com/api/maven/"
+        name 'asie dependency mirror'
+        artifactPattern "http://asie.pl/javadeps/[module]-[revision](-[classifier]).[ext]"
     }
 
 }
@@ -64,10 +59,10 @@ dependencies {
     deobfCompile "mezz.jei:jei_1.12.2:4.10.0.198:api"
     // at runtime, use the full JEI jar
     runtime "mezz.jei:jei_1.12.2:4.10.0.198"
-    compile name: 'Thaumcraft-1.12.2-6.1.BETA17-deobf'
-    compile "refinedstorage:refinedstorage:1.5.34-11+:api"
-    runtime "refinedstorage:refinedstorage:1.5.34-11+"
-    compile name: "Baubles", version: "1.12-1.5.2"
-    compile name: 'efab-0.1.0'
+    deobfCompile name: 'Thaumcraft-1.12.2-6.1.BETA17'
+    deobfCompile "refinedstorage:refinedstorage:1.6+"
+    deobfCompile name: "Baubles", version: "1.12-1.5.2"
+    deobfCompile name: 'mcjtylib-1.12-3.0.3'
+    deobfCompile name: 'efab-0.1.0'
 }
 }
