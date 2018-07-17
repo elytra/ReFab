@@ -1,0 +1,73 @@
+// See https://github.com/elytra/Skeleton/wiki for what all these values mean
+
+ext {
+	group = 'com.elytradev'
+	projectName = 'ReFab'
+
+	useElytraVersionFormat = true
+	version = '1'
+
+	concreteVersion = '0.4.34'
+	concreteModules = [ 'common', 'inventory']
+
+	coremod = null
+	miniVersion = null
+
+	language = 'java'
+
+	forge = '1.12.2-14.23.4.2736'
+	mappings = 'snapshot_20180701'
+
+	enforceLicenseHeaders = false
+
+	verbose = false
+}
+
+if (!ext.early) {
+repositories {
+	// the skeleton already defines mavenCentral, jcenter, and the Elytra repo
+	// will also have Shadowfacts' maven if the language is set to kotlin
+
+	maven {
+		// JEI maven
+		name = "Progwml6 maven"
+		url = "http://dvs1.progwml6.com/files/maven"
+	}
+	maven {
+		// JEI maven fallback
+		name = "ModMaven"
+		url = "modmaven.k-4u.nl"
+	}
+    maven {
+        // refined storage maven
+        name = "refinedstorage"
+        url = "https://repo.raoulvdberge.com/"
+    }
+    flatDir {
+        // thaumcraft in /libs
+        dirs 'libs'
+    }
+    ivy {
+        // baubles mirror
+        name "endless.blue dependency mirror"
+        artifactPattern "https://endless.blue/files/ivy/[module]-[revision].[ext]"
+    }
+    maven {
+        // curseforge maven for efab
+        name = "CurseForge"
+        url = "https://minecraft.curseforge.com/api/maven/"
+    }
+
+}
+
+dependencies {
+    deobfCompile "mezz.jei:jei_1.12.2:4.10.0.198:api"
+    // at runtime, use the full JEI jar
+    runtime "mezz.jei:jei_1.12.2:4.10.0.198"
+    compile name: 'Thaumcraft-1.12.2-6.1.BETA17-deobf'
+    compile "refinedstorage:refinedstorage:1.5.34-11+:api"
+    runtime "refinedstorage:refinedstorage:1.5.34-11+"
+    compile name: "Baubles", version: "1.12-1.5.2"
+    compile name: 'efab-0.1.0'
+}
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "modid": "refab",
+    "name": "ReFab",
+    "description": "Extensions for EFab",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "",
+    "updateUrl": "",
+    "authorList": [
+      "b0undarybreaker"
+    ],
+    "credits": "",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": []
+  }
+]
