@@ -1,5 +1,6 @@
 package com.elytradev.refab.block;
 
+import com.elytradev.refab.ReFab;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.EnumRarity;
@@ -13,13 +14,10 @@ import net.minecraftforge.registries.IForgeRegistry;
 
 public class ModBlocks {
 
-//    public static BlockDistiller DISTILLER = new BlockDistiller().setCreativeTab(Opaline.creativeTab);
-//    public static BlockInfuser INFUSER = new BlockInfuser().setCreativeTab(Opaline.creativeTab);
-//    public static BlockTriTank TRI_TANK = new BlockTriTank().setCreativeTab(Opaline.creativeTab);
-//    public static BlockCentrifuge CENTRIFUGE = new BlockCentrifuge().setCreativeTab(Opaline.creativeTab);
+    public static BlockRefinedProcessor REFINED_PROCESSOR = new BlockRefinedProcessor();
 
     public static Block[] allBlocks = {
-//        DISTILLER, INFUSER, TRI_TANK, CENTRIFUGE
+        REFINED_PROCESSOR
     };
 
     public static void register(IForgeRegistry<Block> registry) {
@@ -27,7 +25,7 @@ public class ModBlocks {
             registry.register(block);
         }
 
-//        GameRegistry.registerTileEntity(DISTILLER.getTileEntityClass(), DISTILLER.getRegistryName().toString());
+        GameRegistry.registerTileEntity(REFINED_PROCESSOR.getTileEntityClass(), REFINED_PROCESSOR.getRegistryName().toString());
     }
 
     public static void registerItemBlocks(IForgeRegistry<Item> registry) {

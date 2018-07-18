@@ -12,6 +12,8 @@ import net.minecraftforge.common.capabilities.Capability;
 import javax.annotation.Nullable;
 
 public class TileEntityRefinedProcessor extends TileEntity implements INetworkNodeProxy, ITickable {
+
+
     //RS API
 
     CraftingNode node;
@@ -36,9 +38,7 @@ public class TileEntityRefinedProcessor extends TileEntity implements INetworkNo
     }
 
     @Override
-    public boolean hasCapability(Capability<?> capability,
-                                 @Nullable
-                                         EnumFacing facing) {
+    public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
         if (capability == CapabilityNetworkNodeProxy.NETWORK_NODE_PROXY_CAPABILITY) {
             return true;
         }
@@ -47,9 +47,7 @@ public class TileEntityRefinedProcessor extends TileEntity implements INetworkNo
 
     @Nullable
     @Override
-    public <T> T getCapability(Capability<T> capability,
-                               @Nullable
-                                       EnumFacing facing) {
+    public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
         if (capability == CapabilityNetworkNodeProxy.NETWORK_NODE_PROXY_CAPABILITY) {
             return (T) this;
         }

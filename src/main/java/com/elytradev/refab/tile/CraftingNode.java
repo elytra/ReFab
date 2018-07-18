@@ -25,6 +25,7 @@ SOFTWARE.
 package com.elytradev.refab.tile;
 
 import com.elytradev.refab.ReFab;
+import com.elytradev.refab.block.ModBlocks;
 import com.raoulvdberge.refinedstorage.api.autocrafting.ICraftingPattern;
 import com.raoulvdberge.refinedstorage.api.autocrafting.ICraftingPatternContainer;
 import com.raoulvdberge.refinedstorage.api.autocrafting.ICraftingPatternProvider;
@@ -119,7 +120,7 @@ public class CraftingNode implements INetworkNode, ICraftingPatternContainer {
         }
     }
 
-    public CachingItemHandler patterns = new CachingItemHandler(6 * 13, new ItemHandlerListenerNetworkNode(this), s -> s.getItem() instanceof ICraftingPatternProvider && ((ICraftingPatternProvider) s.getItem()).create(world, s, this).isValid()) {
+    public CachingItemHandler patterns = new CachingItemHandler(6 * 13, new ItemHandlerListenerNetworkNode(this), s -> s.getItem() instanceof ICraftingPatternProvider) {
         @Override
         protected void onContentsChanged(int slot) {
             super.onContentsChanged(slot);
@@ -183,7 +184,7 @@ public class CraftingNode implements INetworkNode, ICraftingPatternContainer {
     @Nonnull
     @Override
     public ItemStack getItemStack() {
-        return null; //TODO replace
+        return new ItemStack(ModBlocks.REFINED_PROCESSOR);
     }
 
     @Override
@@ -284,7 +285,7 @@ public class CraftingNode implements INetworkNode, ICraftingPatternContainer {
 
     @Override
     public String getName() {
-        return "MultiBlock Crafter";
+        return "Refined Processor";
     }
 
     @Override
