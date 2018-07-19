@@ -4,9 +4,17 @@ import com.elytradev.refab.item.ItemEFabCraftingPattern;
 import com.raoulvdberge.refinedstorage.api.autocrafting.ICraftingPattern;
 import com.raoulvdberge.refinedstorage.api.autocrafting.ICraftingPatternContainer;
 import com.raoulvdberge.refinedstorage.apiimpl.API;
+import com.raoulvdberge.refinedstorage.apiimpl.autocrafting.CraftingPattern;
 import com.raoulvdberge.refinedstorage.apiimpl.autocrafting.registry.CraftingTaskFactory;
+import com.raoulvdberge.refinedstorage.item.ItemPattern;
 import mcjty.efab.recipes.IEFabRecipe;
+import mcjty.efab.recipes.RecipeManager;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.Container;
+import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.CraftingManager;
+import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 
@@ -28,6 +36,31 @@ public class EFabCraftingPattern implements ICraftingPattern {
         this.container=container;
         this.stack=stack;
         this.oredict = ItemEFabCraftingPattern.isOredict(stack);
+
+        InventoryCrafting inv = new InventoryCraftingDummy();
+
+        for (int i = 0; i < 9; ++i) {
+            ItemStack input = ItemPattern.getInputSlot(stack, i);
+
+            inputs.add(input == null ? NonNullList.create() : NonNullList.from(ItemStack.EMPTY, input));
+
+            if (input != null) {
+                inv.setInventorySlotContents(i, input);
+            }
+        }
+
+        valid = false;
+        List<IEFabRecipe> validRecipes = RecipeManager.findValidRecipes(inv, world);
+        if (validRecipes.size() > 0) {
+            IEFabRecipe value = validRecipes.get(0);
+            IRecipe recipe = value.cast();
+            ItemStack output = recipe.getCraftingResult(inv);
+            if (!output.isEmpty()) {
+                outputs.add(output);
+                valid = true;
+            }
+        }
+
     }
 
     @Override
@@ -112,5 +145,19 @@ public class EFabCraftingPattern implements ICraftingPattern {
         }
 
         return result;
+    }
+
+    private class InventoryCraftingDummy extends InventoryCrafting {
+        public InventoryCraftingDummy() {
+            super(new Container() {
+                /**
+                 * Determines whether supplied player can use this container
+                 */
+                @Override
+                public boolean canInteractWith(EntityPlayer player) {
+                    return true;
+                }
+            }, 3, 3);
+        }
     }
 }

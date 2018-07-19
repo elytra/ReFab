@@ -26,6 +26,7 @@ package com.elytradev.refab.tile;
 
 import com.elytradev.refab.ReFab;
 import com.elytradev.refab.block.ModBlocks;
+import com.elytradev.refab.item.ItemEFabCraftingPattern;
 import com.raoulvdberge.refinedstorage.api.autocrafting.ICraftingPattern;
 import com.raoulvdberge.refinedstorage.api.autocrafting.ICraftingPatternContainer;
 import com.raoulvdberge.refinedstorage.api.autocrafting.ICraftingPatternProvider;
@@ -152,8 +153,8 @@ public class CraftingNode implements INetworkNode, ICraftingPatternContainer {
         if (!world.isRemote) {
             for (int i = 0; i < patterns.getSlots(); i++) {
                 ItemStack stack = patterns.getStackInSlot(i);
-                if (!stack.isEmpty() && stack.getItem() instanceof ICraftingPatternProvider) {
-                    ICraftingPattern pattern = ((ICraftingPatternProvider) stack.getItem()).create(world, stack, this);
+                if (!stack.isEmpty() && stack.getItem() instanceof ItemEFabCraftingPattern) {
+                    ICraftingPattern pattern = ((ItemEFabCraftingPattern) stack.getItem()).create(world, stack, this);
                     if (pattern.isValid()) {
                         actualPatterns.add(pattern);
                     }
