@@ -49,7 +49,7 @@ public class EFabCraftingPattern implements ICraftingPattern {
             }
         }
 
-        valid = false;
+        this.valid = false;
         List<IEFabRecipe> validRecipes = RecipeManager.findValidRecipes(inv, world);
         if (validRecipes.size() > 0) {
             IEFabRecipe value = validRecipes.get(0);
@@ -57,7 +57,7 @@ public class EFabCraftingPattern implements ICraftingPattern {
             ItemStack output = recipe.getCraftingResult(inv);
             if (!output.isEmpty()) {
                 outputs.add(output);
-                valid = true;
+                this.valid = true;
             }
         }
 

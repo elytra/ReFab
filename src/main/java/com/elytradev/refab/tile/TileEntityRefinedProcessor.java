@@ -4,15 +4,31 @@ import com.raoulvdberge.refinedstorage.api.network.node.INetworkNodeManager;
 import com.raoulvdberge.refinedstorage.api.network.node.INetworkNodeProxy;
 import com.raoulvdberge.refinedstorage.apiimpl.API;
 import com.raoulvdberge.refinedstorage.capability.CapabilityNetworkNodeProxy;
+import mcjty.efab.blocks.grid.GridCrafterHelper;
+import mcjty.efab.recipes.IEFabRecipe;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraftforge.common.capabilities.Capability;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.List;
 
 public class TileEntityRefinedProcessor extends TileEntity implements INetworkNodeProxy, ITickable {
 
+//    private final GridCrafterHelper crafterHelper = new GridCrafterHelper(this);
+//
+//    @Nonnull
+//    private List<IEFabRecipe> findCurrentRecipesSorted() {
+//        List<IEFabRecipe> recipes = crafterHelper.findCurrentRecipes(getWorld());
+//        recipes.sort((r1, r2) -> {
+//            boolean error1 = getErrorsForOutput(r1, null);
+//            boolean error2 = getErrorsForOutput(r2, null);
+//            return error1 == error2 ? 0 : (error2 ? -1 : 1);
+//        });
+//        return recipes;
+//    }
 
     //RS API
 
