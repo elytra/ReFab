@@ -59,7 +59,7 @@ dependencies {
     deobfCompile "mezz.jei:jei_1.12.2:4.10.0.198:api"
     // at runtime, use the full JEI jar
     runtime "mezz.jei:jei_1.12.2:4.10.0.198"
-    deobfCompile name: 'Thaumcraft-1.12.2-6.1.BETA17'
+    deobfCompile name: 'Thaumcraft-1.12.2-6.1.BETA19'
     deobfCompile "refinedstorage:refinedstorage:1.6+"
     deobfCompile name: "Baubles", version: "1.12-1.5.2"
     deobfCompile name: 'mcjtylib-1.12-3.0.3'
